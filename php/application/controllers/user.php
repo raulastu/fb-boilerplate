@@ -22,3 +22,4 @@ class User extends CI_Controller {
 		$data['fb_user'] = $this->news_model->get_news($slug);
 	}
 }
+?>

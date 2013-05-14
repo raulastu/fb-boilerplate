@@ -23,6 +23,43 @@
       -o-background-size: cover;
       background-size: cover;
     ">
+
+    <!-- START FB-Connect -->
+    <div id="fb-root"></div>
+    <script>
+      function fblogin(){
+        // var nextPage = window.location;
+        FB.login(function(response) {
+            if (response.authResponse) {
+                window.location = "/fblogin";
+             // window.location.reload();
+            }
+        });
+      }
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '462894637088601',
+          channelUrl : '/fb_plugin/channel.html', // Channel File
+          status     : true, // check login status
+          cookie     : true, // enable cookies to allow the server to access the session
+          xfbml      : true  // parse XFBML
+        });
+        // Additional initialization code here
+      };
+
+      // Load the SDK Asynchronously
+      (function(d){
+         var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement('script'); js.id = id; js.async = true;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         ref.parentNode.insertBefore(js, ref);
+       }(document));
+    </script>
+    <!-- END FB-Connect -->
+
+
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -51,8 +88,9 @@
 
               <div class="span3 offset2 ">
                 <div class="btn-group">
-                  <button class="btn btn-large btn-custom-darken"><img src="img/fb-f.png"/></button>
-                  <button class="btn btn-large btn-custom-lighten">Sign up with Facebook</button>
+
+                  <button class="btn btn-large btn-custom-darken" onclick="fblogin()"><img src="img/fb-f.png"/></button>
+                  <button class="btn btn-large btn-custom-lighten" onclick="fblogin()">Sign up with Facebook</button>
                 </div>
                 
 
